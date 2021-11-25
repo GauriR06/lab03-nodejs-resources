@@ -4,16 +4,16 @@ root {
 
 a {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    color: #116be0;
+    color: #0047a5;
     text-decoration: none;
 }
 
 a:hover {
-    background: #66ff66
+    background: #ffffff
 }
 
 a:visited {
-    color: #e70f0f;
+    color: #443e389d;
 }
 
 a:active {
@@ -31,7 +31,7 @@ a.lien:hover {
 }
 
 a.lien:visited {
-    color: teal;
+    color: rgb(245, 245, 245);
 }
 
 a.lien:active {
@@ -39,28 +39,29 @@ a.lien:active {
 }
 
 .banner {
-    background-color: #cc0033;
-    height: 80px;
+    background-color: #cc9600f1;
+    height: 150px;
 }
 
 .logo {
     float: left;
     vertical-align: middle;
-    margin-top: 6px;
-    margin-left: 6px;
+    margin-top: 12px;
+    margin-left: 12px;
+
 }
 
 .title {
-    font-family: serif;
-    font-size: 14px;
+    font-family:  'Lucida Grande';
+    font-size: 35px;
     text-align: center;
     letter-spacing: 20px;
     vertical-align: middle;
-    color: #0a0ae4;
+    color: #5f1e1ed8;
 }
 
 .menu {
-    background-color: #9999ff;
+    background-color: #6e3a2652;
 }
 
 .message {
@@ -79,20 +80,24 @@ a.lien:active {
 }
 
 .content {
-    font-family: cursive;
-    font-size: 12px;
+    font-family: Georgia;
+    color: #382f1ce1;
+    font-size: 16px;
 }
 
-#catalog thead th {
-    background-color: #69c;
+#catalogue thead th {
+    background-color: rgb(102, 172, 204);
+    font-size: 20px;
 }
 
-#catalog tr:nth-child(even) {
-    background-color: rgb(176, 176, 243);
+#catalogue tr:nth-child(even) {
+    background-color: rgb(173, 173, 235);
+    font-size: 15px;
 }
 
-#catalog tr:nth-child(odd) {
-    background-color: rgb(240, 235, 191);
+#catalogue tr:nth-child(odd) {
+    background-color: rgb(150, 142, 196);
+    font-size: 15px;
 }
 
 #foot {
@@ -101,5 +106,6 @@ a.lien:active {
     clear: both;
     position: relative;
     height: 20px;
-    margin-top: -20px;
+    margin-top: 100px;
 }
+

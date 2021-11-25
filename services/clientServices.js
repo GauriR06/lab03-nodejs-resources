@@ -1,5 +1,5 @@
 const { Client } = require('../models/entities');
-const clientDAO = require('../daos/clientDAO');
+const clientDAO = require('../db/clientDAO');
 const bcrypt = require("bcryptjs");
 
 const loginService = (typedUsername, typedPassword, callback) => {
@@ -11,7 +11,7 @@ const loginService = (typedUsername, typedPassword, callback) => {
         if (rows.length == 0) {
             //the user is not in the DB
             console.log("Unkown client, Please click to register");
-            callback(null, false, null);
+            return callback(null, false, null);
         } else {
             //check if password match...
             var num = rows[0].num_client;
@@ -23,7 +23,7 @@ const loginService = (typedUsername, typedPassword, callback) => {
                     throw err2;
                 } else if (!isMatch) {
                     console.log("Password doesn't match!");
-                    callback(null, true, null);
+                    return callback(null, true, null);
                 } else {
                     console.log("Password matches!");
                     clientDAO.findByNumclient(num, function(err3, rows) {
@@ -32,7 +32,7 @@ const loginService = (typedUsername, typedPassword, callback) => {
                         }
                         if (rows.length === 1) {
                             let client = new Client(rows[0].num_client, rows[0].society, rows[0].contact, rows[0].addres, rows[0].zipcode, rows[0].city, rows[0].phone, rows[0].fax, rows[0].max_outstanding);
-                            callback(null, true, rows);
+                            return callback(null, true, rows);
                         } else {
                             throw err3;
                         }
@@ -61,19 +61,29 @@ const registerService = (client, callback) => {
                 console.log(`Insertion  from DAO : ${affectedRows}, ${insertId}`);
                 if (affectedRows != 0) {
                     console.log(`new client ${insertId}, ${client.username}`);
-                    callback(null, false, insertId);
+                    return callback(null, false, insertId);
                 } else {
                     throw err2;
                 }
             });
         } else {
             console.log(`Username exists ${client.username}, ${rows[0].num_client}`);
-            callback(null, true, null);
+            return callback(null, true, null);
         }
     });
 };
 
-const searchService = function(callback) { //to be completed
+const searchService = function(callback) { //to be completed    ------->
+    clientDAO.find(function(err, rows) {
+        if (err) {
+            throw err;
+        }
+        if (rows.length == 0) {
+            console.log("No clients!");
+        } else {
+            return callback(null, rows);
+        }
+    });
 };
 
 const searchNumclientService = function(num_client, callback) {

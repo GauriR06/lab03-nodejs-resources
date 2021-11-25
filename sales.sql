@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for macos10.15 (x86_64)
 --
--- Host: localhost    Database: sales
+-- Host: localhost    Database: my_sales
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- CREATE DATABASE IF NOT EXISTS sales;
-USE sql6440943;
+USE my_sales;
 
 
 --

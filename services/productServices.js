@@ -7,7 +7,7 @@ const searchService = function(callback) {
         if (rows.length == 0) {
             console.log("No products!");
         } else {
-            callback(null, rows);
+            return callback(null, rows);
         }
     });
 };
@@ -17,12 +17,12 @@ const searchIDService = function(reference, callback) {
             throw err;
         }
         if (rows.length == 0) {
-            console.log("Unkown product!");
+            console.log("Unknown product!");
             let product = null;
-            calback(null, product);
+            return callback(null, product);
         } else {
             //rreturn the retrieved product 
-            callback(null, rows[0]);
+            return callback(null, rows[0]);
         }
     });
 };
@@ -33,10 +33,10 @@ const searchCategoryService = function(category, callback) {
         }
         if (rows.length == 0) { //no products
             console.log(`No product in category ${category}!`);
-            calback(null, rows);
+            return callback(null, rows);
         } else {
             //return the rows
-            callback(null, rows);
+            return callback(null, rows);
         }
     });
 };

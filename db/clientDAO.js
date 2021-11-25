@@ -2,15 +2,46 @@ const database = require('./dbQuery');
 const bcrypt = require("bcryptjs");
 
 //select all clients
-function find(callback) {
+function find(callback) {         //------->
     var rows = null;
     //put your code her to select clients and return the array
-    //....
-    callback(null, rows);
+    const selectClients = "SELECT * from client; ";
+    database.getResult(selectClients, function(err, rows) {
+        if (!err) {
+            callback(null, rows);
+        } else {
+            console.log(err);
+            throw err;
+        }
+    });
+
+    //callback(null, rows);
 }
 
 function findByUsername(username, callback) {
     const selectClient = (`SELECT * from account where username like '${username}';`);
+    database.getResult(selectClient, function(err, rows) {
+        if (!err) {
+            callback(null, rows);
+        } else {
+            console.log(err);
+        }
+    });
+}
+
+// function display_client( callback) {
+//     const selectClient = (`SELECT name from account `);
+//     database.getResult(selectClient, function(err, rows) {
+//         if (!err) {
+//             callback(null, rows);
+//         } else {
+//             console.log(err);
+//         }
+//     });
+// }
+
+function findByNumclient(num_client, callback) {
+    const selectClient = (`SELECT * from account where num_client like '${num_client}';`);
     database.getResult(selectClient, function(err, rows) {
         if (!err) {
             callback(null, rows);
@@ -73,9 +104,9 @@ function createClient(client, callback) {
 module.exports = {
     find,
     findByUsername,
-    findBySociety,
+    //findBySociety,
     findByNumclient,
     createClient,
-    deleteClient,
-    createInitialAccounts
+    //deleteClient,
+    //createInitialAccounts
 };
