@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const session = require('express-session');
-app.use(session({secret: 'some secret code'}));
+app.use(session({secret: 'some secret code', resave: false, saveUninitialized:true}));
 
 
 //route for contacts

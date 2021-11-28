@@ -86,17 +86,17 @@ a.lien:active {
 }
 
 #catalogue thead th {
-    background-color: rgb(102, 172, 204);
+    background-color: rgb(247, 175, 20);
     font-size: 20px;
 }
 
 #catalogue tr:nth-child(even) {
-    background-color: rgb(173, 173, 235);
+    background-color: rgb(235, 201, 173);
     font-size: 15px;
 }
 
 #catalogue tr:nth-child(odd) {
-    background-color: rgb(150, 142, 196);
+    background-color: rgb(196, 173, 142);
     font-size: 15px;
 }
 

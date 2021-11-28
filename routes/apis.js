@@ -22,4 +22,5 @@ router.post('/api/register', clientController.registerControl);
 router.post('/api/login', clientController.loginControl);
 //route for listing all clients
 router.get('/api/clients', clientController.getClients);
-
+//route for logout
+router.get('/api/logout', clientController.logout);

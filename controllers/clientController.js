@@ -4,6 +4,7 @@ const loginControl = (request, response) => {
     const clientServices = require('../services/clientServices');
     let username = request.body.username;
     let password = request.body.password;
+    request.session.admin = false; 
     // console.log("-------------------------------- ");
     // console.log(username);
     // console.log(password);
@@ -29,7 +30,7 @@ const loginControl = (request, response) => {
                     //add to session
                     request.session.user = username;
                     request.session.num_client = client[0].num_client;
-                    request.session.admin = false;  
+                    //request.session.admin = false;  
 
                     if(username == "admin" && password == "adminpass"){
                         request.session.admin = true;
@@ -94,14 +95,10 @@ const registerControl = (request, response) => {
 };
 
 const getClients = (request, response) => {  //------->
-    //console.log("-------------------------------- ");
     const clientServices = require('../services/clientServices');
-     //console.log("-------------------------------- ");
-     //console.log(clientServices);
-     //console.log("-------------------------------- ");
     clientServices.searchService(function(err, rows) {
     response.render('clients', { clients_list: rows });
-        //response.end();
+    response.end();
     });
 };
 
@@ -115,9 +112,17 @@ const getClientByNumclient = (request, response) => {
     });
 };
 
+const logout = (request, response) => {
+request.session.destroy();
+response.send("You have logged out.")
+response.end();
+};
+
+
 module.exports = {
     loginControl,
     registerControl,
     getClients,
-    getClientByNumclient
+    getClientByNumclient,
+    logout
 };
