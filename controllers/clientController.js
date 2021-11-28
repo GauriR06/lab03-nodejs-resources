@@ -1,6 +1,7 @@
+const { Client } = require('../models/entities');
+
 const loginControl = (request, response) => {
     const clientServices = require('../services/clientServices');
-    let admin_prev = false;
     let username = request.body.username;
     let password = request.body.password;
     // console.log("-------------------------------- ");
@@ -28,10 +29,17 @@ const loginControl = (request, response) => {
                     //add to session
                     request.session.user = username;
                     request.session.num_client = client[0].num_client;
-                    request.session.admin = false;
-                    response.send(`Login (${username}, ID.${client[0].num_client}) successful!`);
+                    request.session.admin = false;  
 
-                    response.end();
+                    if(username == "admin" && password == "adminpass"){
+                        request.session.admin = true;
+                        response.render("admin", {id:username})
+                    }
+                    else{
+                        response.send(`Login (${username}, ID.${client[0].num_client}) successful!`);
+                    }
+                    
+                    //response.end();
                     
                 }
             });
@@ -39,21 +47,21 @@ const loginControl = (request, response) => {
     }
 };
 
-class Client {
-    constructor(username, password, num_client, society, contact, address, zipcode, city, phone, fax, max_outstanding) {
-        this.username = username;
-        this.password = password;
-        this.num_client = num_client;
-        this.society = society;
-        this.contact = contact;
-        this.addres = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.phone = phone;
-        this.fax = fax;
-        this.max_outstanding = max_outstanding;
-    }
-};
+// class Client {
+//     constructor(username, password, num_client, society, contact, address, zipcode, city, phone, fax, max_outstanding) {
+//         this.username = username;
+//         this.password = password;
+//         this.num_client = num_client;
+//         this.society = society;
+//         this.contact = contact;
+//         this.addres = address;
+//         this.zipcode = zipcode;
+//         this.city = city;
+//         this.phone = phone;
+//         this.fax = fax;
+//         this.max_outstanding = max_outstanding;
+//     }
+// };
 
 const registerControl = (request, response) => {
     const clientServices = require('../services/clientServices');
@@ -86,17 +94,13 @@ const registerControl = (request, response) => {
 };
 
 const getClients = (request, response) => {  //------->
+    //console.log("-------------------------------- ");
     const clientServices = require('../services/clientServices');
-     console.log("-------------------------------- ");
-     console.log(clientServices);
-     console.log("-------------------------------- ");
+     //console.log("-------------------------------- ");
+     //console.log(clientServices);
+     //console.log("-------------------------------- ");
     clientServices.searchService(function(err, rows) {
-         if (request.session.admin == false){
-             response.send('You do not have Admin Priveleges');
-         }
-         else {
-        response.render('clients', { clients_list : rows });
-        }
+    response.render('clients', { clients_list: rows });
         //response.end();
     });
 };

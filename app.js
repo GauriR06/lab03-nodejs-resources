@@ -35,10 +35,15 @@ app.get('/contacts', (req, res) => {
     res.render('contacts'); 
    });
 
-//route for clients
-app.get('/api/clients', (req, res) => {
-    res.render('clients'); 
-   });
+ //route for clients
+ app.get('/clients', (req, res) => {
+     res.render('clients'); 
+    });
+
+//route for admin
+app.get('/api/admin', (req, res) => {
+    res.render('admin'); 
+   });   
 
 //route for sign in
  app.get('/login', (req, res) => {

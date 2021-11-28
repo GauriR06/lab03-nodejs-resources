@@ -3,9 +3,9 @@ const bcrypt = require("bcryptjs");
 
 //select all clients
 function find(callback) {         //------->
-    var rows = null;
+    //var rows = null;
     //put your code her to select clients and return the array
-    const selectClients = "SELECT * from client; ";
+    const selectClients = `SELECT * from client; `;
     database.getResult(selectClients, function(err, rows) {
         if (!err) {
             callback(null, rows);
