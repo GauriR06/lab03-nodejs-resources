@@ -1,39 +1,34 @@
 <%- include('header'); -%>
 
-<!-- <body style = "background-color: rgb(236, 224, 197);"> -->
     <div class="clients"  style = "background-color: rgb(236, 224, 197);">
         <h1 style = "font-family: 'Times New Roman'; color: rgb(79, 107, 21);">Client page</h1>
         <table id="catalogue">
             <thead>
-                <tr>
-                    <th style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;" scope="col"> Name</th>
+                <tr style = "font-family: Georgia;
+                color: #382f1ce1;
+                font-size: 25px;">
+                    <th scope="col"> Name</th>
 
-                    <th style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;" scope="col"> Phone</th>
+                    <!-- <th scope="col"> Phone</th> -->
 
                 </tr>
             </thead>
             <tbody>
                 <% clients_list.forEach(client => { %>
-                    <tr>
-                        <th scope="row" style = "font-family: 'Times New Roman';
-                        color: #5802028c;
-                        font-size: 18px;">
+                    <tr style = "font-family: 'Times New Roman';
+                    color: #5802028c;
+                    font-size: 18px;">
+                        <th scope="row" >
                             <%= client.contact %>
                         </th>
-                        <th scope="row" style = "font-family: 'Times New Roman';
-                        color: #5802028c;
-                        font-size: 18px;">
+                        <!-- <th scope="row" >
                             <%= client.phone %>
-                        </th>
+                        </th> -->
                     </tr>
                 <% }) %>
             </tbody>
         </table>
     </div>
     <br>
-    <!-- </body> -->
+
 <%- include('footer'); -%>
