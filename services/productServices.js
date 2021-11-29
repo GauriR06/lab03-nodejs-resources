@@ -21,7 +21,7 @@ const searchIDService = function(reference, callback) {
             let product = null;
             return callback(null, product);
         } else {
-            //rreturn the retrieved product 
+            //return the retrieved product 
             return callback(null, rows[0]);
         }
     });
