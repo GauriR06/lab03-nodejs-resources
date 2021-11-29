@@ -3,27 +3,21 @@
         <h1 style = "font-family: 'Times New Roman'; color: rgb(79, 107, 21);">Selected articles</h1>
         <table id="catalogue">
             <thead>
-                <tr>
-                    <th style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;"> Name</th>
-                    <th scope="col" style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;">Reference</th>
-                    <th scope="col" style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;">Category</th>
-                    <th scope="col" style = "font-family: Georgia;
-                    color: #382f1ce1;
-                    font-size: 25px;">Price</th>
+                <tr style = "font-family: Georgia;
+                color: #382f1ce1;
+                font-size: 25px;">
+                    <th> Name</th>
+                    <th scope="col" >Reference</th>
+                    <th scope="col" >Category</th>
+                    <th scope="col" >Price</th>
                 </tr>
             </thead>
             <tbody>
                 <% products.forEach(product => { %>
-                    <tr>
-                        <th scope="row" style = "font-family: 'Times New Roman';
-                        color: #5802028c;
-                        font-size: 18px;">
+                    <tr style = "font-family: 'Times New Roman';
+                    color: #5802028c;
+                    font-size: 18px;">
+                        <th scope="row" >
                             <%= product.name %>
                         </th>
                         <td>
@@ -31,18 +25,14 @@
                                 <%= product.reference %>
                             </a>
                         </td>
-                        <td style = "font-family: 'Times New Roman';
-                        color: #3a09098c;
-                        font-size: 18px;">
+                        <td>
                             <%= product.category %>
                         </td>
-                        <td style = "font-family: 'Times New Roman';
-                        color: #3a09098c;
-                        font-size: 18px;">
+                        <td>
                             <%= product.price %>AED
                         </td>
                     </tr>
-                    <% }) %>
+                <% }) %>
             </tbody>
         </table>
     </div>

@@ -48,21 +48,6 @@ const loginControl = (request, response) => {
     }
 };
 
-// class Client {
-//     constructor(username, password, num_client, society, contact, address, zipcode, city, phone, fax, max_outstanding) {
-//         this.username = username;
-//         this.password = password;
-//         this.num_client = num_client;
-//         this.society = society;
-//         this.contact = contact;
-//         this.addres = address;
-//         this.zipcode = zipcode;
-//         this.city = city;
-//         this.phone = phone;
-//         this.fax = fax;
-//         this.max_outstanding = max_outstanding;
-//     }
-// };
 
 const registerControl = (request, response) => {
     const clientServices = require('../services/clientServices');
@@ -114,7 +99,7 @@ const getClientByNumclient = (request, response) => {
 
 const logout = (request, response) => {
 request.session.destroy();
-response.send("You have logged out.")
+response.send("Logout Successful!")
 response.end();
 };
 

@@ -13,12 +13,12 @@ const getArticle = (request, response) => {
 };
 
 
-const getProductByID = (request, response) => {
+const getProductByID = (request, response) => {  
     const catalogueServices = require('../services/productServices');
     let reference = request.params.id;
     catalogueServices.searchIDService(reference, function(err, rows) {
-        response.json(rows);
-        response.end();
+        response.render('article', { products: rows });
+
     });
 };
 
